@@ -12,8 +12,12 @@ export class LibraryService {
     this.books = new BookService()
   }
 
+  getUserById(id: string): User | undefined {
+    return this.users.data.find((_user: User) => _user.id === id)
+  }
+
   getBooksByFavouriteAuthor(userId: string): Book[] {
-    const user = this.users.data.find((_user: User) => _user.id === userId)
+    const user = this.getUserById(userId)
 
     if (user) {
       return this.books.data.filter((book: Book) => book.author === user.favouriteAuthor)
@@ -28,5 +32,15 @@ export class LibraryService {
 
   getBooksByIsbn(isbn: string): Book[] {
     return this.books.data.filter((book: Book) => book.isbn === isbn)
+  }
+
+  borrowBook(userId: string, bookId: string): Book {
+    const user = this.getUserById(userId)
+
+    if (user) {
+      return this.books.borrowBook(userId, bookId)
+    }
+
+    return <Book>{}
   }
 }
