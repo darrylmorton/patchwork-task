@@ -21,4 +21,8 @@ export class LibraryService {
 
     return Array<Book>()
   }
+
+  getBooksByTitle(title: string): Array<Book> {
+    return this.books.data.filter((book: Book) => book.title === title)
+  }
 }
