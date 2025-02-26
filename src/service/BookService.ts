@@ -1,13 +1,13 @@
 import { Book } from '../Book'
 
 export class BookService {
-  data: Array<Book>
+  data: Book[]
 
   constructor() {
     this.data = Array<Book>()
   }
 
-  addBook(book: Book) {
+  addBook(book: Book): void {
     this.data.push(book)
   }
 }
