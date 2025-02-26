@@ -26,7 +26,9 @@ describe('Library Users', () => {
     bookIsbn = '1916585000'
     unavailableBookId = 'be715cc7-bc77-4325-8f31-f11ed7807403'
     unavailableBookTitle = 'Designing Data-Intensive Applications'
+  })
 
+  beforeEach(() => {
     book = {
       id: bookId,
       title: bookTitle,
@@ -101,7 +103,13 @@ describe('Library Users', () => {
     expect(actualResult).to.deep.equal(expectedResult)
   })
 
-  it.skip('As the library owner, I would like to know how many books are being borrowed, so I can see how many are outstanding', () => {})
+  it.only('As the library owner, I would like to know how many books are being borrowed, so I can see how many are outstanding', () => {
+    const expectedResult = 1
+
+    const actualResult = libraryService.countBorrowedBooks()
+
+    expect(actualResult).to.deep.equal(expectedResult)
+  })
 
   it.skip('As a library user, I should be to prevented from borrowing reference books, so that they are always available', () => {})
 })

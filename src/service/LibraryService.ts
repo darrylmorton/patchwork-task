@@ -43,4 +43,8 @@ export class LibraryService {
 
     return <Book>{}
   }
+
+  countBorrowedBooks(): number {
+    return this.books.data.filter((book: Book) => book.userId).length
+  }
 }
