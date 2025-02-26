@@ -103,7 +103,7 @@ describe('Library Users', () => {
     expect(actualResult).to.deep.equal(expectedResult)
   })
 
-  it.only('As the library owner, I would like to know how many books are being borrowed, so I can see how many are outstanding', () => {
+  it('As the library owner, I would like to know how many books are being borrowed, so I can see how many are outstanding', () => {
     const expectedResult = 1
 
     const actualResult = libraryService.countBorrowedBooks()
