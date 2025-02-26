@@ -1,6 +1,6 @@
 import { UserService } from './UserService'
 import { BookService } from './BookService'
-import { User } from '../User'
+import { User, UserType } from '../User'
 import { Book } from '../Book'
 
 export class LibraryService {
@@ -44,7 +44,13 @@ export class LibraryService {
     return <Book>{}
   }
 
-  countBorrowedBooks(): number {
-    return this.books.data.filter((book: Book) => book.userId).length
+  countBorrowedBooks(userId: string): number {
+    const user = this.getUserById(userId)
+
+    if (user && user.type === UserType.ADMIN) {
+      return this.books.data.filter((book: Book) => book.userId).length
+    }
+
+    return 0
   }
 }

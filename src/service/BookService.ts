@@ -20,7 +20,7 @@ export class BookService {
         },
         book: Book
       ) => {
-        if (book.id === bookId) {
+        if (book.id === bookId && !book.reference) {
           book.userId = userId
 
           acc.borrowedBook = book
