@@ -1,0 +1,42 @@
+{
+  "name": "patchwork-task",
+  "version": "1.0.0",
+  "description": "patchwork task",
+  "main": "src/index.ts",
+  "scripts": {
+    "depcheck": "depcheck",
+    "lint": "eslint . --ext .ts",
+    "dev:start": "NODE_ENV=development NODE_OPTIONS='--import tsx' nodemon -q ./src/index.ts",
+    "test": "NODE_ENV=test mocha --config mocharc.json ./test/",
+    "test:unit": "NODE_ENV=test mocha --config mocharc.json ./test/unit/"
+  },
+  "engines": {
+    "node": ">=22.14"
+  },
+  "private": true,
+  "dependencies": {
+    "@types/uuid": "^10.0.0",
+    "typescript": "^5.5.3",
+    "uuid": "^10.0.0"
+  },
+  "peerDependencies": {
+    "@types/chai": "^5.0.1",
+    "@types/node": "^22.13.5",
+    "chai": "^5.2.0",
+    "prettier": "^3.5.2",
+    "tsx": "^4.19.3"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "depcheck": "^1.4.7",
+    "eslint": "^8.57.1",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.6.0",
+    "mocha": "^11.1.0",
+    "nodemon": "^3.1.9"
+  }
+}
