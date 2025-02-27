@@ -25,14 +25,21 @@ export class BookService {
 
           acc.borrowedBook = book
         }
+        acc.books.push(book)
 
         return acc
       },
       { books: Array<Book>(), borrowedBook: <Book>{} }
     )
 
-    this.data = result.books
-
     return result.borrowedBook
+  }
+
+  getFavouriteBooksByAuthor(author: string): Book[] {
+    return this.data.filter((book: Book) => book.author === author)
+  }
+
+  countBorrowedBooks(): number {
+    return this.data.filter((book: Book) => book.userId).length
   }
 }

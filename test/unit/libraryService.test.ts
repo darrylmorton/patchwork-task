@@ -4,7 +4,7 @@ import { LibraryService } from '../../src/service/LibraryService'
 import { Book } from '../../src/Book'
 import { UserType } from '../../src/User'
 
-describe('Library Users', () => {
+describe('Library Service', () => {
   let libraryService: LibraryService
   let userId: string
   let user2Id: string
@@ -57,6 +57,7 @@ describe('Library Users', () => {
     }
 
     libraryService = new LibraryService()
+
     libraryService.users.addUser({
       id: userId,
       firstName: 'John',

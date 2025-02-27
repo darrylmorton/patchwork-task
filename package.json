@@ -7,6 +7,7 @@
     "depcheck": "depcheck",
     "lint": "eslint . --ext .ts",
     "dev:start": "NODE_ENV=development NODE_OPTIONS='--import tsx' nodemon -q ./src/index.ts",
+    "test": "NODE_ENV=test mocha --config mocharc.json ./test/",
     "test:unit": "NODE_ENV=test mocha --config mocharc.json ./test/unit/"
   },
   "engines": {
@@ -20,15 +21,15 @@
   },
   "peerDependencies": {
     "@types/chai": "^5.0.1",
-    "@types/node": "^20.11.30",
+    "@types/node": "^22.13.5",
     "chai": "^5.2.0",
     "prettier": "^3.5.2",
     "tsx": "^4.19.3"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
-    "@typescript-eslint/eslint-plugin": "^8.25.0",
-    "@typescript-eslint/parser": "^8.25.0",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
     "depcheck": "^1.4.7",
     "eslint": "^8.57.1",
     "eslint-config-standard-with-typescript": "^43.0.1",

@@ -1,6 +1,6 @@
 import { UserService } from './UserService'
 import { BookService } from './BookService'
-import { User, UserType } from '../User'
+import { UserType } from '../User'
 import { Book } from '../Book'
 
 export class LibraryService {
@@ -12,15 +12,11 @@ export class LibraryService {
     this.books = new BookService()
   }
 
-  getUserById(id: string): User | undefined {
-    return this.users.data.find((_user: User) => _user.id === id)
-  }
-
   getBooksByFavouriteAuthor(userId: string): Book[] {
-    const user = this.getUserById(userId)
+    const user = this.users.getUserById(userId)
 
     if (user) {
-      return this.books.data.filter((book: Book) => book.author === user.favouriteAuthor)
+      return this.books.getFavouriteBooksByAuthor(user.favouriteAuthor)
     }
 
     return Array<Book>()
@@ -35,7 +31,7 @@ export class LibraryService {
   }
 
   borrowBook(userId: string, bookId: string): Book {
-    const user = this.getUserById(userId)
+    const user = this.users.getUserById(userId)
 
     if (user) {
       return this.books.borrowBook(userId, bookId)
@@ -45,10 +41,10 @@ export class LibraryService {
   }
 
   countBorrowedBooks(userId: string): number {
-    const user = this.getUserById(userId)
+    const user = this.users.getUserById(userId)
 
     if (user && user.type === UserType.ADMIN) {
-      return this.books.data.filter((book: Book) => book.userId).length
+      return this.books.countBorrowedBooks()
     }
 
     return 0
